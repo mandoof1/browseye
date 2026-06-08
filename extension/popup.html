@@ -1,129 +1,128 @@
-1|<!DOCTYPE html>
-2|<html>
-3|<head>
-4|  <meta charset="utf-8">
-5|  <style>
-6|    * { margin: 0; padding: 0; box-sizing: border-box; }
-7|    body {
-8|      width: 320px;
-9|      font-family: 'SF Mono', 'Fira Code', monospace;
-10|      background: #1a1a2e;
-11|      color: #e0e0e0;
-12|      padding: 12px;
-13|      font-size: 13px;
-14|    }
-15|    .header {
-16|      display: flex;
-17|      align-items: center;
-18|      justify-content: space-between;
-19|      margin-bottom: 12px;
-20|      padding-bottom: 8px;
-21|      border-bottom: 1px solid #2d2d44;
-22|    }
-23|    .title {
-24|      font-weight: bold;
-25|      font-size: 15px;
-26|      color: #e94560;
-27|    }
-28|    .status-badge {
-29|      display: inline-block;
-30|      width: 12px;
-31|      height: 12px;
-32|      border-radius: 50%;
-33|      transition: background 0.3s;
-34|    }
-35|    .status-badge.connected { background: #00ff88; box-shadow: 0 0 8px #00ff8844; }
-36|    .status-badge.disconnected { background: #ff4444; }
-37|    .section {
-38|      margin-bottom: 10px;
-39|    }
-40|    .section-title {
-41|      font-size: 11px;
-42|      text-transform: uppercase;
-43|      letter-spacing: 1px;
-44|      color: #8888aa;
-45|      margin-bottom: 6px;
-46|    }
-47|    .info-row {
-48|      display: flex;
-49|      justify-content: space-between;
-50|      padding: 3px 0;
-51|      font-size: 12px;
-52|    }
-53|    .info-label { color: #8888aa; }
-54|    .info-value { color: #e0e0e0; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-55|    .btn {
-56|      background: #2d2d44;
-57|      border: none;
-58|      color: #e0e0e0;
-59|      padding: 6px 12px;
-60|      border-radius: 4px;
-61|      cursor: pointer;
-62|      font-family: inherit;
-63|      font-size: 12px;
-64|      transition: background 0.2s;
-65|      width: 100%;
-66|      text-align: center;
-67|      margin-top: 6px;
-68|    }
-69|    .btn:hover { background: #3d3d55; }
-70|    .btn.primary { background: #e94560; color: #fff; }
-71|    .btn.primary:hover { background: #d63850; }
-72|    .log {
-73|      max-height: 120px;
-74|      overflow-y: auto;
-75|      background: #0f0f1a;
-76|      border-radius: 4px;
-77|      padding: 6px;
-78|      font-size: 11px;
-79|      line-height: 1.4;
-80|      margin-top: 6px;
-81|    }
-82|    .log-entry { color: #666688; }
-83|    .log-entry.info { color: #88aaff; }
-84|    .log-entry.error { color: #ff6666; }
-85|    .log-entry.success { color: #66ff88; }
-86|    .footer {
-87|      font-size: 10px;
-88|      color: #555577;
-89|      text-align: center;
-90|      margin-top: 8px;
-91|      padding-top: 6px;
-92|      border-top: 1px solid #2d2d44;
-93|    }
-94|  </style>
-95|</head>
-96|<body>
-97|  <div class="header">
-98|    <span class="title">Browseye</span>
-99|    <span id="statusDot" class="status-badge disconnected"></span>
-100|  </div>
-101|
-102|  <div class="section">
-103|    <div class="section-title">Connection</div>
-104|    <div class="info-row"><span class="info-label">Server</span><span class="info-value">ws://127.0.0.1:8765</span></div>
-105|    <div class="info-row"><span class="info-label">Status</span><span class="info-value" id="statusText">Disconnected</span></div>
-106|    <div class="info-row"><span class="info-label">Active Tab</span><span class="info-value" id="activeTab">—</span></div>
-107|  </div>
-108|
-109|  <div class="section">
-110|    <div class="section-title">Quick Actions</div>
-111|    <button class="btn primary" id="btnScreenshot">Screenshot Tab</button>
-112|    <button class="btn" id="btnGetLinks">Get Page Links</button>
-113|    <button class="btn" id="btnGetHTML">Dump Page HTML</button>
-114|    <button class="btn" id="btnReconnect">Reconnect WS</button>
-115|  </div>
-116|
-117|  <div class="section">
-118|    <div class="section-title">Activity Log</div>
-119|    <div class="log" id="logContainer">
-120|      <div class="log-entry info">Extension loaded. Awaiting connection...</div>
-121|    </div>
-122|  </div>
-123|
-124|  <div class="footer">Browseye v1.0.0 — ENI</div>
-125|
-126|  <script src="popup.js"></script>
-127|</body>
-128|</html>
-129|
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 320px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 12px;
+      font-size: 13px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #2d2d44;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 15px;
+      color: #e94560;
+    }
+    .status-badge {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    .status-badge.connected { background: #00ff88; box-shadow: 0 0 8px #00ff8844; }
+    .status-badge.disconnected { background: #ff4444; }
+    .section {
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8888aa;
+      margin-bottom: 6px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 0;
+      font-size: 12px;
+    }
+    .info-label { color: #8888aa; }
+    .info-value { color: #e0e0e0; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .btn {
+      background: #2d2d44;
+      border: none;
+      color: #e0e0e0;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      transition: background 0.2s;
+      width: 100%;
+      text-align: center;
+      margin-top: 6px;
+    }
+    .btn:hover { background: #3d3d55; }
+    .btn.primary { background: #e94560; color: #fff; }
+    .btn.primary:hover { background: #d63850; }
+    .log {
+      max-height: 120px;
+      overflow-y: auto;
+      background: #0f0f1a;
+      border-radius: 4px;
+      padding: 6px;
+      font-size: 11px;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+    .log-entry { color: #666688; }
+    .log-entry.info { color: #88aaff; }
+    .log-entry.error { color: #ff6666; }
+    .log-entry.success { color: #66ff88; }
+    .footer {
+      font-size: 10px;
+      color: #555577;
+      text-align: center;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid #2d2d44;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="title">Browseye</span>
+    <span id="statusDot" class="status-badge disconnected"></span>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Connection</div>
+    <div class="info-row"><span class="info-label">Server</span><span class="info-value">ws://127.0.0.1:8765</span></div>
+    <div class="info-row"><span class="info-label">Status</span><span class="info-value" id="statusText">Disconnected</span></div>
+    <div class="info-row"><span class="info-label">Active Tab</span><span class="info-value" id="activeTab">—</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Quick Actions</div>
+    <button class="btn primary" id="btnScreenshot">Screenshot Tab</button>
+    <button class="btn" id="btnGetLinks">Get Page Links</button>
+    <button class="btn" id="btnGetHTML">Dump Page HTML</button>
+    <button class="btn" id="btnReconnect">Reconnect WS</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Activity Log</div>
+    <div class="log" id="logContainer">
+      <div class="log-entry info">Extension loaded. Awaiting connection...</div>
+    </div>
+  </div>
+
+  <div class="footer">Browseye v1.0.0 — ENI</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
