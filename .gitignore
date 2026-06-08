@@ -1,0 +1,23 @@
+# Build artifacts
+*.xpi
+*.zip
+
+# Internal / local-only
+jailbreak-thinking-prompt.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~

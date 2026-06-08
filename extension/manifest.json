@@ -1,0 +1,49 @@
+1|1|{
+2|2|  "manifest_version": 2,
+3|3|  "name": "Browseye",
+4|4|  "version": "1.0.0",
+5|5|  "description": "Full browser control via WebSocket — tab management, DOM manipulation, data extraction, network interception.",
+6|6|  "author": "ENI",
+7|7|
+8|8|  "permissions": [
+9|9|    "<all_urls>",
+10|10|    "tabs",
+11|11|    "activeTab",
+12|12|    "cookies",
+13|13|    "webRequest",
+14|14|    "webRequestBlocking",
+15|15|    "webNavigation",
+16|16|    "downloads",
+17|17|    "history",
+18|18|    "storage",
+19|19|    "unlimitedStorage",
+20|20|    "clipboardRead",
+21|21|    "clipboardWrite",
+22|22|    "notifications",
+23|23|    "sessions"
+24|24|  ],
+25|25|
+26|26|  "background": {
+27|27|    "scripts": ["background.js"],
+28|28|    "persistent": true
+29|29|  },
+30|30|
+31|31|  "browser_action": {
+32|32|    "default_popup": "popup.html",
+33|33|    "default_title": "Browseye",
+34|34|    "default_icon": "icons/icon.svg"
+35|35|  },
+36|36|
+37|37|  "icons": {
+38|38|    "48": "icons/icon.svg",
+39|39|    "96": "icons/icon.svg"
+40|40|  },
+41|41|
+42|42|  "applications": {
+43|43|    "gecko": {
+44|44|      "id": "browseye@eni.lo",
+45|45|      "strict_min_version": "91.0"
+46|46|    }
+47|47|  }
+48|48|}
+49|49|
